@@ -27,8 +27,9 @@
                     
                     <div class="d-flex align-items-center">
                         <span class="text-white me-3">
+                            Hola, <strong>{{ Auth::user()->nombres }}</strong>
                         </span>
-                        <form action="" method="POST">
+                        <form action="/logout" method="POST">
                             @csrf
                             <button class="btn btn-outline-light btn-sm" type="submit">
                                 Cerrar Sesión
@@ -46,6 +47,8 @@
             <p>Bienvenido a la pagina. Esta página solo es visible para usuarios autenticados.</p>
             <hr>
             <p class="mb-0">
+                <strong>Email:</strong> {{ Auth::user()->email }} | 
+    <strong>Miembro desde:</strong> {{ Auth::user()->created_at->format('d/m/Y') }}
             </p>
         </div>
     </div>

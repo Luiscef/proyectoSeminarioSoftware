@@ -26,7 +26,7 @@
                         </div>
                     @endif
 
-                    <form action="" method="POST">
+                    <form action="/registro" method="POST">
                         @csrf
                         
                         <div class="row mb-3">
@@ -63,7 +63,7 @@
                     </form>
 
                     <p class="text-center mt-3">
-                        ¿Ya tienes cuenta? <a href="">Inicia sesión</a>
+                        ¿Ya tienes cuenta? <a href="/login">Inicia sesión</a>
                     </p>
                 </div>
             </div>

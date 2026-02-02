@@ -62,7 +62,7 @@ class AuthController extends Controller
 
         Auth::login($usuario);
 
-        return redirect()->route('/pagina');
+        return redirect()->route('pagina');
     }
 
   
@@ -86,7 +86,7 @@ class AuthController extends Controller
                 'nivel_riesgo' => 'bajo',
             ]);
 
-            return redirect()->route('/pagina');
+            return redirect()->route('pagina');
         }
 
         RegistroSeguridad::create([
@@ -124,6 +124,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
 
-        return redirect()->route('/login')->with('success', 'Sesión cerrada correctamente.');
+        return redirect()->route('login')->with('success', 'Sesión cerrada correctamente.');
     }
 }
