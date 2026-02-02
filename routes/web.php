@@ -1,19 +1,25 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
+// Ruta raíz redirige al login
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
-Route::get('/registro', function () {
-    return view('registro');
-});
+// Rutas PÚBLICAS (sin autenticación)
+Route::get('/login', [AuthController::class, 'mostrarLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/registro', [AuthController::class, 'mostrarRegistro'])->name('register');
+Route::post('/registro', [AuthController::class, 'registro']);
 
-Route::get('/pagina', function () {
-    return view('pagina');
+// Rutas PROTEGIDAS (requieren autenticación)
+Route::middleware('auth')->group(function () {
+    Route::get('/pagina', function () {
+        return view('pagina');
+    })->name('pagina');
+    
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

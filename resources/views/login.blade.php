@@ -15,14 +15,12 @@
                 <div class="card-body p-4">
                     <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
-                    {{-- Mensaje de error --}}
                     @if (session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
                         </div>
                     @endif
 
-                    {{-- Mensaje de éxito --}}
                     @if (session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
