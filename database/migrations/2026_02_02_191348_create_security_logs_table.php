@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('registros_seguridad', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('tipo_evento', 50);
             $table->foreignId('usuario_id')->nullable()->constrained('users')->onDelete('set null');
             $table->string('email')->nullable();
