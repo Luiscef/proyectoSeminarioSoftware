@@ -47,8 +47,7 @@
             <p>Bienvenido a la pagina. Esta página solo es visible para usuarios autenticados.</p>
             <hr>
             <p class="mb-0">
-                <strong>Email:</strong> {{ Auth::user()->email }} | 
-    <strong>Miembro desde:</strong> {{ Auth::user()->created_at->format('d/m/Y') }}
+                <strong>Email:</strong> {{ Auth::user()->email }} 
             </p>
         </div>
     </div>

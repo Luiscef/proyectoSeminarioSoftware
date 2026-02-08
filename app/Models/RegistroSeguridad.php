@@ -20,7 +20,7 @@ class RegistroSeguridad extends Model
         'nivel_riesgo',
     ];
 
-    // Relación con User
+    // Relación con usuario
     public function usuario()
     {
         return $this->belongsTo(User::class, 'usuario_id');

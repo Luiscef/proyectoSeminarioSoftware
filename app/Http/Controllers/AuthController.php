@@ -41,7 +41,10 @@ class AuthController extends Controller
             'email.unique' => 'Este email ya está registrado.',
             'nombres.required' => 'El campo nombres es obligatorio.',
             'apellidos.required' => 'El campo apellidos es obligatorio.',
+            'email.required' => 'Es necesario que introduzca un email',
+            'password.required' => 'Es necesario que introduzca una contraseña',
             'password.confirmed' => 'Las contraseñas no coinciden.',
+            'password.min' => 'Longitud minima de 8'
         ]);
 
         $usuario = User::create([
@@ -59,9 +62,7 @@ class AuthController extends Controller
             'detalles' => 'Usuario registrado desde ' . $request->userAgent(),
             'nivel_riesgo' => 'bajo',
         ]);
-
         Auth::login($usuario);
-
         return redirect()->route('pagina');
     }
 
@@ -71,9 +72,14 @@ class AuthController extends Controller
         $credenciales = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+        ],
+        [
+            'email.required' => 'Proporcione un email',
+            'password.required' => 'Introduzca su contraseña',
+            'email.email' => 'El email debe ser uno valido'
         ]);
 
-        if (Auth::attempt($credenciales, $request->filled('remember'))) {
+        if (Auth::attempt($credenciales)) {
             
             $request->session()->regenerate();
 
@@ -114,16 +120,9 @@ class AuthController extends Controller
             'nivel_riesgo' => 'bajo',
         ]);
 
-      
         Auth::logout();
-
-     
         $request->session()->invalidate();
-
-        //REGENERAR token CSRF
         $request->session()->regenerateToken();
-
-
         return redirect()->route('login')->with('success', 'Sesión cerrada correctamente.');
     }
 }

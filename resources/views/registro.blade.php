@@ -15,7 +15,6 @@
                 <div class="card-body p-4">
                     <h2 class="text-center mb-4">Crear Cuenta</h2>
 
-                    {{-- Errores de validación --}}
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul class="mb-0">
@@ -33,30 +32,30 @@
                             <div class="col-md-6">
                                 <label class="form-label">Nombres</label>
                                 <input type="text" class="form-control" name="nombres" 
-                                       value="{{ old('nombres') }}" required>
+                                       value="{{ old('nombres') }}">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Apellidos</label>
                                 <input type="text" class="form-control" name="apellidos" 
-                                       value="{{ old('apellidos') }}" required>
+                                       value="{{ old('apellidos') }}">
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
                             <input type="email" class="form-control" name="email" 
-                                   value="{{ old('email') }}" required>
+                                   value="{{ old('email') }}">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" name="password" required>
+                            <input type="password" class="form-control" name="password">
                             <small class="text-muted">Mínimo 8 caracteres</small>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Confirmar Contraseña</label>
-                            <input type="password" class="form-control" name="password_confirmation" required>
+                            <input type="password" class="form-control" name="password_confirmation">
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Registrarse</button>

@@ -19,11 +19,9 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
 
-    // Relación con registros de seguridad
     public function registrosSeguridad()
     {
         return $this->hasMany(RegistroSeguridad::class, 'usuario_id');

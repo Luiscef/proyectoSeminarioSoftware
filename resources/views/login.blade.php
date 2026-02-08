@@ -15,6 +15,16 @@
                 <div class="card-body p-4">
                     <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     @if (session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
@@ -32,18 +42,13 @@
                         
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" 
-                                   value="{{ old('email') }}" required>
+                            <input type="text" class="form-control" name="email" 
+                                   value="{{ old('email') }}">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" name="password" required>
-                        </div>
-
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" name="remember" id="remember">
-                            <label class="form-check-label" for="remember">Recordarme</label>
+                            <input type="password" class="form-control" name="password">
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Entrar</button>
